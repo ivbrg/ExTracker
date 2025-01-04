@@ -1,0 +1,45 @@
+{% load static %}
+
+<style src="{% static 'tracker/style.css' %}"></style>
+
+<h1 class="welcome">Welcome, {{ request.user.username }}</h1>
+<body>
+{% block content %}
+<h2>Your Balance</h2>
+<p>Your current balance is: {{ balance }}</p>
+
+<button id="deposit-btn">Deposit</button>
+<button id="withdraw-btn">Withdraw</button>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{% static 'js/app.js' %}"> </script>
+
+<h2>Transaction History</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction.timestamp }}</td>
+            <td>{{ transaction.get_transaction_type_display }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.description }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No transactions found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+{% endblock %}

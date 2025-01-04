@@ -1,0 +1,9 @@
+<div class="popup-content">
+    <h2>{{ transaction_type|title }}</h2>
+    <form method="post" id="transaction-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-sumbit">Submit</button>
+        <button type="button" class="btn-cancel" onclick="closePopup()">Cancel</button>
+    </form>
+</div>
