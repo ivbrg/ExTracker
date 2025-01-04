@@ -1,0 +1,2 @@
+# ExTracker
+Django expenses tracker
