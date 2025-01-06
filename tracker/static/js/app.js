@@ -3,12 +3,19 @@ function openTransactionPopup(type) {
         url: `/tracker/transaction-popup/${type}/`,
         type: "GET",
         success: function(data) {
-            if (data.html_form) {
-                // Add overlay and popupto the DOM
+            if (data.html_form) {     
+                
+                // Add overlay and popup to the DOM
+
+                $('body').append('<div class="popup-overlay"></div>');
                 $('body').append('<div id="popup-modal">' + data.html_form + '</div>');
+
                 $('#popup-modal').show();
 
-                // Submit the form
+                // Show the overlay and popup
+                $('.popup-overlay').fadeIn(200);
+                $('#popup-modal').fadeIn(200);
+
                 $('#transaction-form').on('submit', function(event) {
                     event.preventDefault();
                     $.ajax({
@@ -24,12 +31,16 @@ function openTransactionPopup(type) {
                         }
                     });
                 });
+
             }
         }
     });
 }
 
 function closePopup(){
+    $('.popup-overlay').fadeOut(200, function(){
+        $(this).remove();
+    })
     $('#popup-modal').fadeOut(200, function (){
         $(this).remove();
     });
