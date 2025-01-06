@@ -1,0 +1,30 @@
+.transaction-controls {
+    margin-bottom: 20px;
+}
+
+.transaction-controls label {
+    margin-right: 10px;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+}
+
+.pagination span {
+    margin: 0 5px;
+    padding: 5px 10px;
+}
