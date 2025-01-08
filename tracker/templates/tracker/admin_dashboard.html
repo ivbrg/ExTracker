@@ -1,0 +1,23 @@
+<h1>Admin Dashboard</h1>
+
+<!-- Display total balance for all users -->
+<p><strong>Total Balance (All Users):</strong> {{ total_balance }}</p>
+
+<!-- Dropdown to select a user -->
+<form method="get">
+    <label for="user_id">Select User:</label>
+    <select name="user_id" id="user_id" onchange="this.form.submit()">
+        <option value="">-- Select User --</option>
+        {% for user in users %}
+        <option value="{{ user.id }}" {% if selected_user and selected_user.id == user.id %}selected{% endif %}>
+            {{ user.username }}
+        </option>
+        {% endfor %}
+    </select>
+</form>
+
+<!-- Display selected user's balance -->
+{% if selected_user %}
+    <h2>Balance for {{ selected_user.username }}</h2>
+    <p><strong>Balance:</strong> {{ user_balance }}</p>
+{% endif %}
